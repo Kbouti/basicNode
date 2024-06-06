@@ -45,3 +45,14 @@ console.log(process.env.USER_KEY);
 
 // I have no idea what this is on about... I only get undefined when I try to console.log(process.....)
 
+
+var http = require('http');
+
+http.createServer(function (req, res) {
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+    res.end('Hello mutherfucking World!');
+}).listen(8080);
+
+
+// Ok whatever this^^ did it worked. We can see our message at the following url: 
+// http://localhost:8080/
