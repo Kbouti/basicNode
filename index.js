@@ -39,8 +39,8 @@ console.log('Hello World');
 // We run the following to set these two vaiables: 
 // USER_ID=239482 USER_KEY=foobar node index.js
 
-console.log(process.env.USER_ID);
-console.log(process.env.USER_KEY);
+// console.log(process.env.USER_ID);
+// console.log(process.env.USER_KEY);
 // console.log(USER_ID);
 
 // I have no idea what this is on about... I only get undefined when I try to console.log(process.....)
@@ -56,3 +56,20 @@ http.createServer(function (req, res) {
 
 // Ok whatever this^^ did it worked. We can see our message at the following url: 
 // http://localhost:8080/
+// So I believe we've created a server and asked  node to print some plain text on that server?
+// In order for that^ page to be viewable Node must be running. Either run "node index.js" or "node --watch index.js"
+
+
+// Next we Created a separate module file and created a module to export
+
+let dateModule = require('./modules/myFirstModule.js');
+
+http.createServer(function (req, res) {
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+    res.write("The date and time is currently: " + dateModule.myDateTime());
+    res.end();
+}).listen(8020);
+
+// Now we're getting the date and time from a separate module and displaying it at localHost:8020
+
+
