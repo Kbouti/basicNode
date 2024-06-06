@@ -31,6 +31,8 @@ console.log('Hello World');
 // ^^Your javascript(for example a console.log statement) between the ""
 
 
-
+// Use watch to continuously watch for changes and restart the file:
+// node --watch index.js
+// control + c to quit
 
 
