@@ -35,4 +35,13 @@ console.log('Hello World');
 // node --watch index.js
 // control + c to quit
 
+// Next we're trying to access the environment variables set at the time process was started. 
+// We run the following to set these two vaiables: 
+// USER_ID=239482 USER_KEY=foobar node index.js
+
+console.log(process.env.USER_ID);
+console.log(process.env.USER_KEY);
+// console.log(USER_ID);
+
+// I have no idea what this is on about... I only get undefined when I try to console.log(process.....)
 
