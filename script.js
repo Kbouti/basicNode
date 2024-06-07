@@ -5,10 +5,10 @@
 
 //  ************************************************************************************************************************************
 // We can run node by running the terminal command:
-// node index.js
+// node script.js
 // ^^ Doing this tells the shell(?) to run our script with node.
 // Alternately we could use the watch flag to watch for changes:
-// node --watch index.js
+// node --watch script.js
 // control+c to quit
 //  ************************************************************************************************************************************
 
@@ -78,18 +78,31 @@ console.log("Hello Node console");
 const http = require("http");
 
 // Create a server object:
+// http.createServer(function (req, res) {
+//     // First we declare content type for Head. The first argument (200) is a status code that means all ok. 
+//     // The second argument is an object  containing response headers
+//     res.writeHead(200, { "Content-Type": "text/html" });
+//     // Next write a response to the client:
+//     res.write("Let's go for a bike ride");
+//     // End the response:
+//     res.end();
+//   })
+//   .listen(8080);
+
+// The function passed into the http.createServer() method will be executed when someone tries to access the computer on port 8080
+
+
+//  ************************************************************************************************************************************
+// Moving on with the same code as above, just no notes
+
+// Our page now writes the request url on the page. 
+// So when we visit http://localhost:8080/winter in the browser, we see: "/winter"
+
 http.createServer(function (req, res) {
-    // First we declare content type for Head. The first argument (200) is a status code that means all ok. 
-    // The second argument is an object  containing response headers
     res.writeHead(200, { "Content-Type": "text/html" });
-    // Next write a response to the client:
-    res.write("Let's go for a bike ride");
-    // End the response:
+    res.write(req.url);
     res.end();
   })
   .listen(8080);
 
-// The function passed into the http.createServer() method will be executed when someone tries to access the computer on port 8080
-
-// Next step:
-// Add an HTTP Header:
+  
