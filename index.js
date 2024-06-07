@@ -74,20 +74,21 @@ console.log("Hello Node console");
 
 //  ************************************************************************************************************************************
 // Next exercise:
-
+// Just breaking things down again
 const http = require("http");
 
 // Create a server object:
-http
-  .createServer(function (req, res) {
-    // Write a response to the client:
+http.createServer(function (req, res) {
+    // First we declare content type for Head. The first argument (200) is a status code that means all ok. 
+    // The second argument is an object  containing response headers
+    res.writeHead(200, { "Content-Type": "text/html" });
+    // Next write a response to the client:
     res.write("Let's go for a bike ride");
     // End the response:
     res.end();
   })
   .listen(8080);
 
-// Ok I don't think ^this^ is anything new but it is slightly simpler syntax?
 // The function passed into the http.createServer() method will be executed when someone tries to access the computer on port 8080
 
 // Next step:
