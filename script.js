@@ -75,11 +75,11 @@ console.log("Hello Node console");
 //  ************************************************************************************************************************************
 // Next exercise:
 // Just breaking things down again
-const http = require("http");
+// const http = require("http");
 
 // Create a server object:
 // http.createServer(function (req, res) {
-//     // First we declare content type for Head. The first argument (200) is a status code that means all ok. 
+//     // First we declare content type for Head. The first argument (200) is a status code that means all ok.
 //     // The second argument is an object  containing response headers
 //     res.writeHead(200, { "Content-Type": "text/html" });
 //     // Next write a response to the client:
@@ -91,18 +91,40 @@ const http = require("http");
 
 // The function passed into the http.createServer() method will be executed when someone tries to access the computer on port 8080
 
-
 //  ************************************************************************************************************************************
 // Moving on with the same code as above, just no notes
 
-// Our page now writes the request url on the page. 
+// Our page now writes the request url on the page.
 // So when we visit http://localhost:8080/winter in the browser, we see: "/winter"
+// const http = require("http");
 
-http.createServer(function (req, res) {
+// http.createServer(function (req, res) {
+//     res.writeHead(200, { "Content-Type": "text/html" });
+//     res.write(req.url);
+//     res.end();
+//   })
+//   .listen(8080);
+
+//  ************************************************************************************************************************************
+// Next lesson is to split the query string
+
+const http = require("http");
+const url = require("url");
+
+http
+  .createServer(function (req, res) {
     res.writeHead(200, { "Content-Type": "text/html" });
-    res.write(req.url);
-    res.end();
+    const q = url.parse(req.url, true).query;
+    const txt = q.year + " " + q.month;
+    res.end(txt);
   })
   .listen(8080);
 
-  
+// This time we visit:
+// http://localhost:8080/?year=2017&month=July
+// So basically we've demonstrated that the req object is obtained by the browser request from the server.
+// Once we parse the request we can access data from it
+  //  ************************************************************************************************************************************
+
+  // Next up, using Node.js as a file server. 
+  // Hopefully this is where things start to make a little more sense in the context of making an actual website...
