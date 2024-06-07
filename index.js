@@ -43,14 +43,14 @@ console.log("Hello Node console");
 
 //  ************************************************************************************************************************************
 
-const http = require("http");
+// const http = require("http");
 
-http
-  .createServer(function (req, res) {
-    res.writeHead(200, { "Content-Type": "text/plain" });
-    res.end("Hello mutherfucking World!");
-  })
-  .listen(8080);
+// http
+//   .createServer(function (req, res) {
+//     res.writeHead(200, { "Content-Type": "text/plain" });
+//     res.end("Hello mutherfucking World!");
+//   })
+//   .listen(8080);
 
 // Ok whatever this^^ did it worked. We can see our message at the following url:
 // http://localhost:8080/
@@ -60,17 +60,35 @@ http
 //  ************************************************************************************************************************************
 // Next we Create a separate module file and created a module to export
 
-let dateModule = require("./modules/myFirstModule.js");
+// let dateModule = require("./modules/myFirstModule.js");
 
-http
-  .createServer(function (req, res) {
-    res.writeHead(200, { "Content-Type": "text/plain" });
-    res.write("The date and time is currently: " + dateModule.myDateTime());
-    res.end();
-  })
-  .listen(8020);
+// http
+//   .createServer(function (req, res) {
+//     res.writeHead(200, { "Content-Type": "text/plain" });
+//     res.write("The date and time is currently: " + dateModule.myDateTime());
+//     res.end();
+//   })
+//   .listen(8020);
 
 // Now we're getting the date and time from a separate module and displaying it at localHost:8020
 
 //  ************************************************************************************************************************************
 // Next exercise:
+
+const http = require("http");
+
+// Create a server object:
+http
+  .createServer(function (req, res) {
+    // Write a response to the client:
+    res.write("Let's go for a bike ride");
+    // End the response:
+    res.end();
+  })
+  .listen(8080);
+
+// Ok I don't think ^this^ is anything new but it is slightly simpler syntax?
+// The function passed into the http.createServer() method will be executed when someone tries to access the computer on port 8080
+
+// Next step:
+// Add an HTTP Header:
