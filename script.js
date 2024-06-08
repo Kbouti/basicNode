@@ -163,9 +163,21 @@ console.log("Hello Node console");
 // The fs.open() method takes a "flag" as a second argument. "w" means the file is open for writing.
 // If the file does not exist, an empty file is created:
 
-const fs = require("fs");
+// const fs = require("fs");
 
-fs.open("mynewfile2.txt", "w", function (err, file) {
+// fs.open("mynewfile2.txt", "w", function (err, file) {
+//   if (err) throw err;
+//   console.log("Saved another one!");
+// });
+
+//  ************************************************************************************************************************************
+// fs.writeFile() replaces the specified file and content if it exists. If it does not exist, it makes a new file. 
+// Another way of making a file...
+
+const fs = require('fs');
+fs.writeFile('mynewfile3.txt', "Hello overridden content!", function(err){
   if (err) throw err;
-  console.log("Saved another one!");
+  console.log(`Saved 3!`);
 });
+
+//  ************************************************************************************************************************************
