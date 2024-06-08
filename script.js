@@ -171,7 +171,7 @@ console.log("Hello Node console");
 // });
 
 //  ************************************************************************************************************************************
-// fs.writeFile() replaces the specified file and content if it exists. If it does not exist, it makes a new file. 
+// fs.writeFile() replaces the specified file and content if it exists. If it does not exist, it makes a new file.
 // Another way of making a file...
 
 // const fs = require('fs');
@@ -194,11 +194,26 @@ console.log("Hello Node console");
 //  ************************************************************************************************************************************
 // Rename files....
 
-const fs = require('fs');
+// const fs = require("fs");
 
-fs.rename('mynewfile1.txt', 'renamedfile1.txt', function(err) {
-  if(err) throw err;
-  console.log('File 1 renamed');
-});
+// fs.rename("mynewfile1.txt", "renamedfile1.txt", function (err) {
+//   if (err) throw err;
+//   console.log("File 1 renamed");
+// });
+
+//  ************************************************************************************************************************************
+// Next up is the built in URL module.
+// This is used to break a web address up into readable parts
+
+const url = require("url");
+const adr = "http://localhost:8080/default.htm?year=2017&month=february";
+const q = url.parse(adr, true);
+
+console.log(q.host); //returns 'localhost:8080'
+console.log(q.pathname); //returns '/default.htm'
+console.log(q.search); //returns '?year=2017&month=february'
+
+const qdata = q.query; //returns an object: { year: 2017, month: 'february' }
+console.log(qdata.month); //returns 'february'
 
 //  ************************************************************************************************************************************
