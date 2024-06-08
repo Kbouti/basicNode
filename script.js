@@ -108,17 +108,17 @@ console.log("Hello Node console");
 //  ************************************************************************************************************************************
 // Next lesson is to split the query string
 
-const http = require("http");
-const url = require("url");
+// const http = require("http");
+// const url = require("url");
 
-http
-  .createServer(function (req, res) {
-    res.writeHead(200, { "Content-Type": "text/html" });
-    const q = url.parse(req.url, true).query;
-    const txt = q.year + " " + q.month;
-    res.end(txt);
-  })
-  .listen(8080);
+// http
+//   .createServer(function (req, res) {
+//     res.writeHead(200, { "Content-Type": "text/html" });
+//     const q = url.parse(req.url, true).query;
+//     const txt = q.year + " " + q.month;
+//     res.end(txt);
+//   })
+//   .listen(8080);
 
 // This time we visit:
 // http://localhost:8080/?year=2017&month=July
@@ -128,3 +128,18 @@ http
 
   // Next up, using Node.js as a file server. 
   // Hopefully this is where things start to make a little more sense in the context of making an actual website...
+
+// First we're asked to setup an html file in the same directory (done, index.html).
+// This time we're requiring the File System module "fs" 
+
+  const http = require('http');
+  const fs = require('fs');
+
+  http.createServer(function (req, res) {
+    fs.readFile('index.html', function(err, data) {
+      res.writeHead(200, {'Content-Type': 'text/html'});
+      res.write(data);
+      return res.end();
+    });
+  }).listen(8080);
+
