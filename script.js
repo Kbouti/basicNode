@@ -148,13 +148,24 @@ console.log("Hello Node console");
 
 // Next up is Create File:
 
-const fs = require("fs");
-fs.appendFile("mynewfile1.txt", "Hello content!", function (err) {
-  if (err) throw err;
-  console.log("saved!");
-});
+// const fs = require("fs");
+// fs.appendFile("mynewfile1.txt", "Hello content!", function (err) {
+//   if (err) throw err;
+//   console.log("saved!");
+// });
 
 // First we require fs, then we append a new file with some conent and a callback that logs 'saved!' if there are no errors.
 // If we run node script.js ...This file now exists in our current directory!
+// If we accidentally run node watch, it won't keep creating a new file, but it will keep adding the "Hello Content" text to the file
 
 //  ************************************************************************************************************************************
+
+// The fs.open() method takes a "flag" as a second argument. "w" means the file is open for writing.
+// If the file does not exist, an empty file is created:
+
+const fs = require("fs");
+
+fs.open("mynewfile2.txt", "w", function (err, file) {
+  if (err) throw err;
+  console.log("Saved another one!");
+});
