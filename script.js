@@ -124,22 +124,37 @@ console.log("Hello Node console");
 // http://localhost:8080/?year=2017&month=July
 // So basically we've demonstrated that the req object is obtained by the browser request from the server.
 // Once we parse the request we can access data from it
-  //  ************************************************************************************************************************************
+//  ************************************************************************************************************************************
 
-  // Next up, using Node.js as a file server. 
-  // Hopefully this is where things start to make a little more sense in the context of making an actual website...
+// Next up, using Node.js as a file server.
+// Hopefully this is where things start to make a little more sense in the context of making an actual website...
 
 // First we're asked to setup an html file in the same directory (done, index.html).
-// This time we're requiring the File System module "fs" 
+// This time we're requiring the File System module "fs"
 
-  const http = require('http');
-  const fs = require('fs');
+// const http = require('http');
+// const fs = require('fs');
 
-  http.createServer(function (req, res) {
-    fs.readFile('index.html', function(err, data) {
-      res.writeHead(200, {'Content-Type': 'text/html'});
-      res.write(data);
-      return res.end();
-    });
-  }).listen(8080);
+// http.createServer(function (req, res) {
+//   fs.readFile('index.html', function(err, data) {
+//     res.writeHead(200, {'Content-Type': 'text/html'});
+//     res.write(data);
+//     return res.end();
+//   });
+// }).listen(8080);
 
+// This will render our index.html page at port 8080
+//  ************************************************************************************************************************************
+
+// Next up is Create File:
+
+const fs = require("fs");
+fs.appendFile("mynewfile1.txt", "Hello content!", function (err) {
+  if (err) throw err;
+  console.log("saved!");
+});
+
+// First we require fs, then we append a new file with some conent and a callback that logs 'saved!' if there are no errors.
+// If we run node script.js ...This file now exists in our current directory!
+
+//  ************************************************************************************************************************************
