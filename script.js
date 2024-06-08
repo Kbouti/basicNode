@@ -174,10 +174,21 @@ console.log("Hello Node console");
 // fs.writeFile() replaces the specified file and content if it exists. If it does not exist, it makes a new file. 
 // Another way of making a file...
 
-const fs = require('fs');
-fs.writeFile('mynewfile3.txt', "Hello overridden content!", function(err){
+// const fs = require('fs');
+// fs.writeFile('mynewfile3.txt', "Hello overridden content!", function(err){
+//   if (err) throw err;
+//   console.log(`Saved 3!`);
+// });
+
+//  ************************************************************************************************************************************
+// Next up, delete files with unlink()
+
+const fs = require('fs')
+
+fs.unlink('mynewfile2.txt', function(err) {
   if (err) throw err;
-  console.log(`Saved 3!`);
+  console.log('File 2 deleted');
 });
 
+// Noiice, we deleted empty file 2.
 //  ************************************************************************************************************************************
