@@ -183,12 +183,22 @@ console.log("Hello Node console");
 //  ************************************************************************************************************************************
 // Next up, delete files with unlink()
 
-const fs = require('fs')
+// const fs = require('fs')
 
-fs.unlink('mynewfile2.txt', function(err) {
-  if (err) throw err;
-  console.log('File 2 deleted');
-});
+// fs.unlink('mynewfile2.txt', function(err) {
+//   if (err) throw err;
+//   console.log('File 2 deleted');
+// });
 
 // Noiice, we deleted empty file 2.
+//  ************************************************************************************************************************************
+// Rename files....
+
+const fs = require('fs');
+
+fs.rename('mynewfile1.txt', 'renamedfile1.txt', function(err) {
+  if(err) throw err;
+  console.log('File 1 renamed');
+});
+
 //  ************************************************************************************************************************************
