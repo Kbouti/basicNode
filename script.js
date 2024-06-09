@@ -227,14 +227,16 @@ const http = require("http");
 const fs = require("fs");
 const url = require("url");
 
+console.log(`Hello before server`);
 http
   .createServer(function (req, res) {
     const q = url.parse(req.url, true);
+    console.log(`q: ${q}`);
     const filename = "./modules/" + q.pathname;
     fs.readFile(filename, function (err, data) {
       if (err) {
         res.writeHead(404, { "Content-Type": "text/html" });
-        return res.end("404 not found");
+        return res.end("Oops! 404 not found");
       }
       res.writeHead(200, { "Content-Type": "text/html" });
       res.write(data);
@@ -243,7 +245,13 @@ http
   })
   .listen(8080);
 
+// http://localhost:8080/summer.html
+// http://localhost:8080/winter.html
+
 // Boom!!! We've done something that resembles what we're being asked to do for the project.  Hooray!
 // We can now in theory host a site with multiple pages.
 //  ************************************************************************************************************************************
 //  ************************************************************************************************************************************
+
+// This video explains very well what I think we need to do: 
+// https://www.youtube.com/watch?v=ENrzD9HAZK4
