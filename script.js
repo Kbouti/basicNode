@@ -223,15 +223,14 @@ console.log("Hello Node console");
 
 // Now we create a now file that opens the requested file and returns the content to the client. If anything goes wrong throw an error
 
-const http = require("http");
-const fs = require("fs");
-const url = require("url");
+const http = require('http');
+const fs = require('fs');
+const url = require('url');
 
 console.log(`Hello before server`);
-http
-  .createServer(function (req, res) {
+http.createServer(function (req, res) {
     const q = url.parse(req.url, true);
-    console.log(`q: ${q}`);
+    // console.log(`q: ${q}`);
     const filename = "./modules/" + q.pathname;
     fs.readFile(filename, function (err, data) {
       if (err) {
@@ -255,3 +254,6 @@ http
 
 // This video explains very well what I think we need to do: 
 // https://www.youtube.com/watch?v=ENrzD9HAZK4
+
+
+// Also check out node crash  course by net ninja. We're about 9 minutes into episode 2
