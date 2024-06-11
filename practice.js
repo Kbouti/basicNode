@@ -17,6 +17,12 @@ global.setTimeout(() => {
 // We don't need to explicity call global, but that's where the setTimeout and setInterval methods live.
 // Next we'll setInterval --The difference being that interval repeats, timeout only happens once.
 
-setInterval(() =>{
+const lucy = setInterval(() =>{
     greet("Lucy");
 }, 1000);
+
+
+setTimeout(() => {
+    clearInterval(lucy);
+}, 10000);
+// Now we'll end our lucy interval. Nice!
