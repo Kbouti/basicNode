@@ -244,7 +244,7 @@ http
       console.log(`assigning filename to index.html`);
       filename = "./index.html";
     } else {
-      filename = "./modules" + query.pathname;
+      filename = "./modules" + query.pathname + ".html"
     }
     console.log(`filename: ${filename}`);
 
@@ -261,11 +261,11 @@ http
   .listen(8080);
 
 // http://localhost:8080/
-// http://localhost:8080/summer.html
-// http://localhost:8080/winter.html
+// http://localhost:8080/about
+// http://localhost:8080/contact-me
 
-// We've done it!!!!!! We should spruce up the pages a bit and add links between them, but I think this is the meat of what I've been trying to accomplish. 
-//  ************************************************************************************************************************************
+// We've completed the main goal, now we need to try and load our 404 page when you enter anything other than a correct request. Shouldn't be too tricky.....
+// ************************************************************************************************************************************
 //  ************************************************************************************************************************************
 
 // This video explains very well what I think we need to do:
