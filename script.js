@@ -233,6 +233,15 @@ console.log(`We're about to launch server`);
 
 http.createServer(function (req, res) {
     const q = url.parse(req.url, true);
+    console.log(q.pathname);
+    // WHY CAN'T I GET CONSOLE.LOG STATEMENTS TO RUN HERE???? 
+    // AND WHY CAN'T I EVALUATE A BREAKPOINT HERE?? 
+
+    // Does the code not run? It does.....
+
+// IT DOES!!!! It runs when we visit localhost:8080/summer.html
+// So it only runs when the page is refreshed or in other words..... when a request is sent to the server!!!!
+
     const filename = "./modules/" + q.pathname;
     fs.readFile(filename, function (err, data) {
       if (err) {
