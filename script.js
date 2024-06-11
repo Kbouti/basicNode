@@ -227,10 +227,12 @@ const http = require('http');
 const fs = require('fs');
 const url = require('url');
 
-console.log(`Hello before server`);
+console.log(`We're about to launch server`);
+
+// console.log(http);
+
 http.createServer(function (req, res) {
     const q = url.parse(req.url, true);
-    // console.log(`q: ${q}`);
     const filename = "./modules/" + q.pathname;
     fs.readFile(filename, function (err, data) {
       if (err) {
