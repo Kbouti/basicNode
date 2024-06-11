@@ -223,26 +223,31 @@ console.log("Hello Node console");
 
 // Now we create a now file that opens the requested file and returns the content to the client. If anything goes wrong throw an error
 
-const http = require('http');
-const fs = require('fs');
-const url = require('url');
+const http = require("http");
+const fs = require("fs");
+const url = require("url");
 
 console.log(`We're about to launch server`);
 
 // console.log(http);
 
-http.createServer(function (req, res) {
-    const q = url.parse(req.url, true);
-    console.log(q.pathname);
-    // WHY CAN'T I GET CONSOLE.LOG STATEMENTS TO RUN HERE???? 
-    // AND WHY CAN'T I EVALUATE A BREAKPOINT HERE?? 
+http
+  .createServer(function (req, res) {
+    const query = url.parse(req.url, true);
 
-    // Does the code not run? It does.....
+    const path = query.pathname;
+    console.log(`path: ${path}`);
 
-// IT DOES!!!! It runs when we visit localhost:8080/summer.html
-// So it only runs when the page is refreshed or in other words..... when a request is sent to the server!!!!
+    let filename;
 
-    const filename = "./modules/" + q.pathname;
+    if (path == "/") {
+      console.log(`assigning filename to index.html`);
+      filename = "./index.html";
+    } else {
+      filename = "./modules" + query.pathname;
+    }
+    console.log(`filename: ${filename}`);
+
     fs.readFile(filename, function (err, data) {
       if (err) {
         res.writeHead(404, { "Content-Type": "text/html" });
@@ -255,16 +260,14 @@ http.createServer(function (req, res) {
   })
   .listen(8080);
 
+// http://localhost:8080/
 // http://localhost:8080/summer.html
 // http://localhost:8080/winter.html
 
-// Boom!!! We've done something that resembles what we're being asked to do for the project.  Hooray!
-// We can now in theory host a site with multiple pages.
+// We've done it!!!!!! We should spruce up the pages a bit and add links between them, but I think this is the meat of what I've been trying to accomplish. 
 //  ************************************************************************************************************************************
 //  ************************************************************************************************************************************
 
-// This video explains very well what I think we need to do: 
+// This video explains very well what I think we need to do:
 // https://www.youtube.com/watch?v=ENrzD9HAZK4
 
-
-// Also check out node crash  course by net ninja. We're about 9 minutes into episode 2
