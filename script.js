@@ -240,7 +240,7 @@ http
 
     let filename;
 
-    if (path == "/") {
+    if ((path == "/") || (path == "")) {
       console.log(`assigning filename to index.html`);
       filename = "./index.html";
     } else {
